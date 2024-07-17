@@ -1,0 +1,326 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "Documentación de la API",
+        "contact": {
+            "email": "jmejia.jm449@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Servidor de la API"
+        }
+    ],
+    "paths": {
+        "/api/register-user": {
+            "post": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Registrar usuarios",
+                "operationId": "c2ac7d76e4893cf19345c9af284d1e30",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Nombre del usuario",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "email": {
+                                        "description": "Email del usuario",
+                                        "type": "string",
+                                        "format": "email",
+                                        "maxLength": 255
+                                    },
+                                    "password": {
+                                        "description": "Contraseña",
+                                        "type": "password",
+                                        "format": "string",
+                                        "maxLength": 255
+                                    },
+                                    "password_confirmation": {
+                                        "description": "Confirmar",
+                                        "type": "password",
+                                        "format": "string",
+                                        "maxLength": 255
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Permite registrar usuarios."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/all-users": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Obtiene todos los usuarios registrados.",
+                "description": "Permite obtener todos los usuarios registrados en la base de datos",
+                "operationId": "allUsers",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa, muestra el listado de todos los usuarios regisgtrados."
+                    },
+                    "400": {
+                        "description": "No se encontraron usuarios registrados, por favor ingresa una nueva."
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al obtener los usuarios registrados."
+                    }
+                }
+            }
+        },
+        "/api/all-visits": {
+            "get": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Obtener todos los registros de visitas",
+                "description": "Permite obtener todas las visitas registradas en la base de datos",
+                "operationId": "getAllVisits",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa, muestra el listado de los registros de visitas"
+                    },
+                    "400": {
+                        "description": "No se encontraron visitas, por favor ingresa una nueva."
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al obtener los registros de visitas"
+                    }
+                }
+            }
+        },
+        "/api/one-visits/{id}": {
+            "get": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Obtener un registro de visita por ID",
+                "description": "Permite obtener un registro de visita específico por ID",
+                "operationId": "7435ec3e2706752c027e0768d3ef50e5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la visita a obtener",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa, muestra el registro de la visita cosultada."
+                    },
+                    "404": {
+                        "description": "No se encontraron registros de visitas que coincidan con el ID proporcionado."
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al obtener los registros de visitas."
+                    }
+                }
+            }
+        },
+        "/api/create-visits": {
+            "post": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Crear una nueva visita",
+                "description": "Crea una nueva visita en la base de datos",
+                "operationId": "59a27aa15c2d2bc3dde82231d1ce0965",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "latitude",
+                                    "longitude"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Nombre del visitante",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "email": {
+                                        "description": "Email del visitante",
+                                        "type": "string",
+                                        "format": "email",
+                                        "maxLength": 255
+                                    },
+                                    "latitude": {
+                                        "description": "Latitud de la visita",
+                                        "type": "number",
+                                        "format": "float",
+                                        "maximum": 90,
+                                        "minimum": -90
+                                    },
+                                    "longitude": {
+                                        "description": "Longitud de la visita",
+                                        "type": "number",
+                                        "format": "float",
+                                        "maximum": 180,
+                                        "minimum": -180
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "La visita ha sido creada correctamente."
+                    },
+                    "400": {
+                        "description": "Solicitud inválida"
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al registrar la visita."
+                    }
+                }
+            }
+        },
+        "/api/update-visits": {
+            "put": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Permite actualizar un registro de visitas",
+                "description": "Actualiza por medio del ID un registro de  visitas en la base de datos",
+                "operationId": "eafedb658ddf177744c6ff8ff1453b16",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id",
+                                    "name",
+                                    "email",
+                                    "latitude",
+                                    "longitude"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "description": "ID del registro",
+                                        "type": "number",
+                                        "maxLength": 255
+                                    },
+                                    "name": {
+                                        "description": "Nombre del visitante",
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "email": {
+                                        "description": "Email del visitante",
+                                        "type": "string",
+                                        "format": "email",
+                                        "maxLength": 255
+                                    },
+                                    "latitude": {
+                                        "description": "Latitud de la visita",
+                                        "type": "number",
+                                        "format": "float",
+                                        "maximum": 90,
+                                        "minimum": -90
+                                    },
+                                    "longitude": {
+                                        "description": "Longitud de la visita",
+                                        "type": "number",
+                                        "format": "float",
+                                        "maximum": 180,
+                                        "minimum": -180
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "El registro con ID  fue actualizado correctamente."
+                    },
+                    "400": {
+                        "description": "Solicitud inválida"
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error al actualizar este registro."
+                    }
+                }
+            }
+        },
+        "/api/delete-visits/{id}": {
+            "delete": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Eliminar un registro de visitas por medio del ID.",
+                "description": "Permite eliminar registros en la base de datos por medio del ID.",
+                "operationId": "deleteVisits",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la visita a eliminar.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "El registro asociado al ID ('.$id.') ha sido elimanado de forma exitosa."
+                    },
+                    "400": {
+                        "description": "El registro que intenta eliminar no fue encontrado."
+                    },
+                    "500": {
+                        "description": "Se ha producido un error al intentar eliminar el registro de la visita asociada al ID ('.$id.')."
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Usuarios",
+            "description": "Usuarios"
+        },
+        {
+            "name": "Visits",
+            "description": "Visits"
+        }
+    ]
+}

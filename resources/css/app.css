@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.menu-link {
+    color: #9ba7af;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 15px 15px;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    line-height: 25px;
+    
+    font-family: 'Source Sans Pro';
+}
+.menu-link:hover, .menu-link:focus {
+    color: #f15828;
+}
+
+.menu-icon {
+    margin-right: 0.5rem;
+    width: 16px;
+    height: 16px;
+}
+
+.sizeIcon
+{
+    font-size: 10px;
+}
+
+.error {
+    color: red;
+}
+
+img.custom-marker {
+    filter: hue-rotate(160deg);
+    color: #f15828;
+}
+
+.pback
+{
+    background-color: #f05727;
+    color: #fff;
+    font-weight: bold;
+}
+
+.pdding
+{
+    padding: 10px;
+}
