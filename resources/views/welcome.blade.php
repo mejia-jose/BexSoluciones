@@ -29,7 +29,8 @@
                     alt="Logo" class="h-12">
             </div>
             <nav class="hidden md:flex md:space-x-6">
-                <a href="#" class="menu-link"> <i class="fa-solid fa-chevron-right sizeIcon"></i> INICIO </a>
+                <a href="#" class="menu-link"> <i class="fa-solid fa-chevron-right sizeIcon"></i> Inicio </a>
+                <a href="api/documentation" class="menu-link"> <i class="fa-solid fa-chevron-right sizeIcon"></i> Documentación  API</a>
                 <a href="https://bexsoluciones.com/quienes-somos/" class="menu-link"> <i
                         class="fa-solid fa-chevron-right sizeIcon"></i> Quiénes Somos</a>
                 <a href="https://bexsoluciones.com/quienes-somos/equipo-bex-soluciones/" class="menu-link"> <i
