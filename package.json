@@ -2,8 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
-        "postinstall": "npm i --legacy-peer-deps"
+        "build": "vite build"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.0.0",
